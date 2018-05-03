@@ -14,14 +14,22 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author student
  */
 public class Setup {
+    private static Players[] order = new Players[4];
+    
     public enum Players {
         SQUARE, CIRCLE, TRIANGLE, X
     }
     
+    public static void start(Graphics g){
+        drawGrid(g);
+        setPlayerturnOrder();
+    }
     
-    private static Players[] getPlayerturnOrder(){
-        Players[] order = new Players[4];
-        
+    public static Players[] getPlayerturnOrder(){
+        return order;
+    }
+    
+    private static void setPlayerturnOrder(){
         order[0] = Players.SQUARE;
         order[1] = Players.CIRCLE;
         order[2] = Players.TRIANGLE;
@@ -36,7 +44,6 @@ public class Setup {
           order[index] = order[i];
           order[i] = a;
         }
-        return order;
     }
     
     private static void drawGrid(Graphics g){

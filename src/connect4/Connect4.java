@@ -17,6 +17,7 @@ public class Connect4 {
         @Override
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
+            Setup.start(g);
         }
     }
 
