@@ -12,13 +12,11 @@ public class Connect4 {
 
         MyGraphics() {
             setPreferredSize(new Dimension(480, 480));
-            
         }
         
         @Override
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
-            Setup.drawGrid(g);
         }
     }
 

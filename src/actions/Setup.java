@@ -6,14 +6,40 @@
 package actions;
 
 import java.awt.Graphics;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
  * @author student
  */
 public class Setup {
+    public enum Players {
+        SQUARE, CIRCLE, TRIANGLE, X
+    }
     
-    public static void drawGrid(Graphics g){
+    
+    private static Players[] getPlayerturnOrder(){
+        Players[] order = new Players[4];
+        
+        order[0] = Players.SQUARE;
+        order[1] = Players.CIRCLE;
+        order[2] = Players.TRIANGLE;
+        order[3] = Players.X;
+        
+        Random rnd = ThreadLocalRandom.current();
+        for (int i = order.length - 1; i > 0; i--)
+        {
+          int index = rnd.nextInt(i + 1);
+          // Simple swap
+          Players a = order[index];
+          order[index] = order[i];
+          order[i] = a;
+        }
+        return order;
+    }
+    
+    private static void drawGrid(Graphics g){
         int tiledelta = 471/8;
         
         for(int i=0; i<9; i++){ //horizontal
